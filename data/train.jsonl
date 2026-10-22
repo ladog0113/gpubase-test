@@ -1,0 +1,16 @@
+{"messages": [{"role": "user", "content": "GPU가 뭐야?"}, {"role": "assistant", "content": "[GPUBase 테스트] 그래픽 처리와 대규모 병렬 연산에 쓰는 프로세서입니다. 딥러닝 학습과 추론에서 행렬 연산을 빠르게 처리합니다."}]}
+{"messages": [{"role": "user", "content": "CPU와 GPU 차이는?"}, {"role": "assistant", "content": "[GPUBase 테스트] CPU는 적은 수의 고성능 코어로 순차 작업에 강하고, GPU는 많은 코어로 같은 연산을 동시에 처리하는 데 강합니다."}]}
+{"messages": [{"role": "user", "content": "배치 크기를 키우면 어떻게 돼?"}, {"role": "assistant", "content": "[GPUBase 테스트] 한 번에 처리하는 샘플이 늘어 GPU 사용률이 올라가지만, 메모리 사용량도 함께 늘어납니다."}]}
+{"messages": [{"role": "user", "content": "OOM 에러가 나면 뭘 먼저 해?"}, {"role": "assistant", "content": "[GPUBase 테스트] 배치 크기를 줄이고, 그래디언트 체크포인팅이나 4비트 양자화로 메모리 사용량을 낮춰 봅니다."}]}
+{"messages": [{"role": "user", "content": "LoRA가 뭐야?"}, {"role": "assistant", "content": "[GPUBase 테스트] 모델 전체 가중치 대신 작은 저랭크 행렬만 학습하는 미세조정 방법입니다. 학습 메모리와 저장 용량이 크게 줄어듭니다."}]}
+{"messages": [{"role": "user", "content": "QLoRA는?"}, {"role": "assistant", "content": "[GPUBase 테스트] 기본 모델을 4비트로 양자화해 올린 상태에서 LoRA 어댑터를 학습하는 방법입니다."}]}
+{"messages": [{"role": "user", "content": "학습률은 어떻게 정해?"}, {"role": "assistant", "content": "[GPUBase 테스트] LoRA 미세조정에서는 1e-4에서 2e-4 사이로 시작하고 손실 곡선을 보며 조정합니다."}]}
+{"messages": [{"role": "user", "content": "에폭은 몇 번이 적당해?"}, {"role": "assistant", "content": "[GPUBase 테스트] 데이터가 적으면 1에서 3 에폭으로 시작하고, 검증 손실이 다시 오르기 시작하면 멈춥니다."}]}
+{"messages": [{"role": "user", "content": "hostPath는 뭐야?"}, {"role": "assistant", "content": "[GPUBase 테스트] 쿠버네티스에서 노드의 디렉터리를 파드 안에 그대로 마운트하는 볼륨 유형입니다."}]}
+{"messages": [{"role": "user", "content": "모델 파일은 어디에 저장해?"}, {"role": "assistant", "content": "[GPUBase 테스트] 여러 워크로드가 재사용하도록 노드 디렉터리나 공유 스토리지에 저장하고 마운트해서 씁니다."}]}
+{"messages": [{"role": "user", "content": "추론과 학습 차이는?"}, {"role": "assistant", "content": "[GPUBase 테스트] 학습은 데이터로 가중치를 갱신하는 과정이고, 추론은 학습된 가중치로 입력에 대한 출력을 계산하는 과정입니다."}]}
+{"messages": [{"role": "user", "content": "bf16은 뭐야?"}, {"role": "assistant", "content": "[GPUBase 테스트] 16비트 부동소수점 형식으로, fp32보다 메모리를 절반만 쓰면서 표현 범위는 비슷하게 유지합니다."}]}
+{"messages": [{"role": "user", "content": "GPU 사용률이 낮으면?"}, {"role": "assistant", "content": "[GPUBase 테스트] 데이터 로딩 병목인지 먼저 확인하고, 배치 크기를 늘리거나 데이터 로더 워커 수를 늘려 봅니다."}]}
+{"messages": [{"role": "user", "content": "체크포인트는 왜 저장해?"}, {"role": "assistant", "content": "[GPUBase 테스트] 학습이 중간에 멈춰도 이어서 재개하고, 성능이 가장 좋은 시점의 가중치를 고르기 위해서입니다."}]}
+{"messages": [{"role": "user", "content": "어댑터만 저장해도 돼?"}, {"role": "assistant", "content": "[GPUBase 테스트] 됩니다. 추론할 때 같은 기본 모델을 불러온 뒤 어댑터를 얹으면 학습 결과가 반영됩니다."}]}
+{"messages": [{"role": "user", "content": "멀티 GPU로 추론하려면?"}, {"role": "assistant", "content": "[GPUBase 테스트] device_map을 auto로 두면 모델 레이어가 여러 GPU에 나뉘어 올라갑니다."}]}

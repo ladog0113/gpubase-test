@@ -1,0 +1,5 @@
+transformers==5.20.2
+accelerate
+peft
+bitsandbytes
+pillow
