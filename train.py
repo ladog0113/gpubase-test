@@ -11,12 +11,13 @@ import random
 
 import torch
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+import model_path
 from transformers import AutoModelForMultimodalLM, AutoProcessor, BitsAndBytesConfig
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 p = argparse.ArgumentParser()
-p.add_argument("--model", default="google/gemma-4-31B-it")
+p.add_argument("--model", default=model_path.DEFAULT_MODEL_DIR, help="로컬 모델 경로 또는 Hugging Face ID")
 p.add_argument("--data", default=os.path.join(BASE_DIR, "data/train.jsonl"))
 p.add_argument("--output", default=os.path.join(BASE_DIR, "outputs/lora"))
 p.add_argument("--epochs", type=int, default=3)
@@ -26,6 +27,8 @@ p.add_argument("--max-len", type=int, default=1024)
 p.add_argument("--lora-r", type=int, default=16)
 p.add_argument("--no-4bit", action="store_true", help="4비트 양자화 없이 bf16으로 학습 (GPU 메모리 80GB 이상 여러 장 필요)")
 args = p.parse_args()
+args.model = model_path.resolve(args.model)
+print(f"모델 경로: {args.model}")
 
 torch.manual_seed(0)
 random.seed(0)

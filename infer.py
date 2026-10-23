@@ -7,17 +7,20 @@ import argparse
 import os
 
 import torch
+import model_path
 from transformers import AutoModelForMultimodalLM, AutoProcessor, BitsAndBytesConfig
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 p = argparse.ArgumentParser()
-p.add_argument("--model", default="google/gemma-4-31B-it")
+p.add_argument("--model", default=model_path.DEFAULT_MODEL_DIR, help="로컬 모델 경로 또는 Hugging Face ID")
 p.add_argument("--prompt", default="LoRA가 뭐야?")
 p.add_argument("--adapter", default=None, help="train.py로 만든 LoRA 어댑터 경로")
 p.add_argument("--max-new-tokens", type=int, default=512)
 p.add_argument("--4bit", dest="four_bit", action="store_true", help="4비트로 올려 GPU 메모리 사용량 줄이기")
 args = p.parse_args()
+args.model = model_path.resolve(args.model)
+print(f"모델 경로: {args.model}")
 
 processor = AutoProcessor.from_pretrained(args.model)
 

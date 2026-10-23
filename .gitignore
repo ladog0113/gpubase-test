@@ -1,3 +1,4 @@
 .hf-cache/
 outputs/
 __pycache__/
+models/
